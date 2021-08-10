@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.156
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Umbrella", "Umbrella\Umbrella.csproj", "{808F2527-951E-4A36-B296-2693DD572DFF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{808F2527-951E-4A36-B296-2693DD572DFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{808F2527-951E-4A36-B296-2693DD572DFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{808F2527-951E-4A36-B296-2693DD572DFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{808F2527-951E-4A36-B296-2693DD572DFF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8F3C6D4A-0D29-4FB1-AF33-26D2904F222B}
+	EndGlobalSection
+EndGlobal
