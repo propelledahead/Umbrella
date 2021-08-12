@@ -70,8 +70,6 @@ namespace Umbrella.DataAccess {
             return _results;
         }
     }
-
-
     public static class TypeConverterExtension {
         public static T ChangeType<T>(object value) {
             return (T) ChangeType(typeof(T), value);

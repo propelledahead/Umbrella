@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Umbrella.BusinessServices.Repositories;
-using Umbrella.Models.User.RequestModels;
-using Umbrella.Models.User.ResponseModels;
+using Umbrella.Models.User; // for receiving and response models
 
-namespace Playground.Authorities
+
+namespace Umbrella.Authorities
 {
     public class UserAuthority
     {

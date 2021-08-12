@@ -121,20 +121,21 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="BusinessServices\Repositories\PollmakerRepository.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\PollmakerController.cs" />
-    <Compile Include="DataAccess\DatabaseParameters.cs" />
-    <Compile Include="DataAccess\DatabaseParameterList.cs" />
-    <Compile Include="DataAccess\MSSQLDataReaderExtension.cs" />
-    <Compile Include="DataAccess\MSSQLHelper.cs" />
-    <Compile Include="DataAccess\MSSQLTypeMap.cs" />
-    <Compile Include="DataAccess\UserDAO.cs" />
+    <Compile Include="DataAccess\Abstracts\DatabaseParameters.cs" />
+    <Compile Include="DataAccess\Abstracts\DatabaseParameterList.cs" />
+    <Compile Include="DataAccess\Abstracts\MSSQLDataReaderExtension.cs" />
+    <Compile Include="DataAccess\Abstracts\MSSQLHelper.cs" />
+    <Compile Include="DataAccess\Abstracts\MSSQLTypeMap.cs" />
+    <Compile Include="DataAccess\DAO\UserDAO.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Pollmaker\ResponseModels\pollread_read_response.cs" />
     <Compile Include="Models\Pollmaker\RequestModels\pollread_read_request.cs" />
-    <Compile Include="Models\User\RequestModels\UserRequestModel.cs" />
-    <Compile Include="Models\User\ResponseModels\UserResponseModel.cs" />
+    <Compile Include="Models\User\RequestModels\user_read_request.cs" />
+    <Compile Include="Models\User\ResponseModels\user_read_response.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="BusinessServices\Repositories\UserRepository.cs" />
   </ItemGroup>

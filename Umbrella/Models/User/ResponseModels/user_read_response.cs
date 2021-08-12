@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Umbrella.Models.User.ResponseModels {
+namespace Umbrella.Models.User {
     public class user_read_response {
         private Guid _id = Guid.Empty;
         private string _name_first = "";

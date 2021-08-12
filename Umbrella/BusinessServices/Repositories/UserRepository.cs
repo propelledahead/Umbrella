@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using Umbrella.Models.User.RequestModels;
-using Umbrella.Models.User.ResponseModels;
+using Umbrella.Models.User; // for receiving and response models
+
 
 namespace Umbrella.BusinessServices.Repositories {
     public abstract class UserRepository {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Umbrella.Models.Pollmaker.RequestModels {
+namespace Umbrella.Models.Pollmaker {
     public class pollread_read_request {
         #region Getters and Setters
         private string _id = "";

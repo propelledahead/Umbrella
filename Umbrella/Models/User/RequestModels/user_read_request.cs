@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Umbrella.Models.User.RequestModels {
+namespace Umbrella.Models.User {
     public class user_read_request
     {
         private Guid _user_guid;

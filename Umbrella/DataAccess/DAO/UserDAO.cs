@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Umbrella.Models.User.RequestModels;
-using Umbrella.Models.User.ResponseModels;
+using Umbrella.Models.User; // for receiving and response models
 using System.Collections;
 using System.Data.SqlClient;
 using Umbrella.DataAccess;
