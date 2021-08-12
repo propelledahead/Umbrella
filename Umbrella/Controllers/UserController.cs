@@ -5,10 +5,10 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Umbrella.Models.User; // for receiving and response models
-using Umbrella.BusinessServices.Repositories; // for business services
+using Umbrella.BusinessServices; // for business services
 using Umbrella.ControllersHelpers; // for json parser
 using System.Reflection; // for controller helpers (json parser)
-using Umbrella.Authorities;
+
 
 namespace Umbrella.Controllers {
     public class UserController : Controller {
@@ -24,8 +24,8 @@ namespace Umbrella.Controllers {
                 , Request.InputStream
             );
             // Create a business logic instance and process request using business logic
-            UserAuthority _business_service = new UserAuthority();
-            List<user_read_response> _response = _business_service.UserCreate(_request);
+            UserService _business_service = new UserService();
+            List<user_read_response> _response = _business_service.users_get(_request);
             return Json(_response, JsonRequestBehavior.AllowGet);
         }
 

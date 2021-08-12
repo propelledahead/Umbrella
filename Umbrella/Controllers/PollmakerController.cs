@@ -5,7 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Umbrella.Models.Pollmaker; // for receiving and response models
-using Umbrella.BusinessServices.Repositories; // for business services
+using Umbrella.BusinessServices; // for business services
 using Umbrella.ControllersHelpers; // for json parser
 using System.Reflection; // for controller helpers (json parser)
 
@@ -23,8 +23,8 @@ namespace Umbrella.Controllers {
                 , Request.InputStream
             );
             // Create a business logic instance and process request using business logic
-            PollmakerRepository _business_service = new PollmakerRepository();
-            List<pollread_read_response> _response = _business_service.PollRead(_request);
+            PollmakerService _business_service = new PollmakerService();
+            List<pollread_read_response> _response = _business_service.api_call(_request);
             return Json(_response, JsonRequestBehavior.AllowGet);
         }
 
