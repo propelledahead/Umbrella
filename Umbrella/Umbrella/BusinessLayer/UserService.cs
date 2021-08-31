@@ -21,7 +21,6 @@ namespace Umbrella.BusinessLayer {
                 // some sort of validation test here
                 UserDAO _DAO = new UserDAO();
                 _result = _DAO.user_details_read(oModel);
-
             } catch { }
             return _result;
         }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Umbrella.DataLayer {
+namespace Umbrella.DataLayer.Helpers {
     public class DatabaseParameterList {
 
         private List<DatabaseParameters> _oParams = new List<DatabaseParameters>();

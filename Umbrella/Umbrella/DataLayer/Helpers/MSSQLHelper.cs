@@ -7,7 +7,7 @@ using Microsoft.Data.SqlClient;
 using System.Collections;
 
 
-namespace Umbrella.DataLayer {
+namespace Umbrella.DataLayer.Helpers {
     public class MSSQLHelper {
 
         private SqlConnection _SqlConnection;
@@ -111,6 +111,12 @@ namespace Umbrella.DataLayer {
             }
             _rows_affected = _SqlCommand.ExecuteNonQuery();
             return _rows_affected;
+        }
+
+        public MSSQLHelper(string ConnetionString) {
+            if (!String.IsNullOrEmpty(ConnetionString)) {
+                this.Connect(ConnetionString);
+            }
         }
     }
 

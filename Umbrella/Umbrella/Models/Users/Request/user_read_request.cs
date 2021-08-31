@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 namespace Umbrella.Models.User {
     public class user_read_request
     {
-        private Guid _user_guid;
+        private Guid _user_guid = Guid.Parse("00000000-0000-0000-0000-000000000000");
         private string _name_first = "";
         private string _name_last = "";
 

@@ -55,7 +55,7 @@ namespace Umbrella.DataLayer.Helpers {
 
         #region Methods
 
-        public string ToConnectionString(bool UseServerName) {
+        public string ToConnectionString(bool UseServerName = true) {
             string _result = "";
             if (!String.IsNullOrEmpty(this._server_name)
                 && !String.IsNullOrEmpty(this._database_name)
@@ -98,7 +98,16 @@ namespace Umbrella.DataLayer.Helpers {
             this.Password = Password;
 
         }
+        public MSSQLConnectionCredential(string ServerIP, string ServerName, string DatabaseName, string UserName, string Password, bool PreferUsingServerIPAddress) {
 
+            this.ServerIP = ServerIP;
+            this.ServerName = ServerName;
+            this.DatabaseName = DatabaseName;
+            this.UserName = UserName;
+            this.Password = Password;
+            this.PreferUsingServerIPAddress = PreferUsingServerIPAddress;
+
+        }
         #endregion
 
     }

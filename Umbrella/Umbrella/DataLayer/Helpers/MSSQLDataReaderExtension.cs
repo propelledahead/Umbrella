@@ -9,7 +9,7 @@ using System.Reflection;
 using System.ComponentModel;
 
 
-namespace Umbrella.DataLayer {
+namespace Umbrella.DataLayer.Helpers {
     public static class MSSQLDataReaderExtension
     {
         // Refer to FastMember (https://stackoverflow.com/questions/41040189/fastest-way-to-map-result-of-sqldatareader-to-object)

@@ -43,7 +43,7 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "dependencies": {
-            "BuildBundlerMinifier": {
+            "BundlerMinifier.Core": {
               "target": "Package",
               "version": "[3.2.449, )"
             },
@@ -58,10 +58,6 @@
             "Microsoft.Data.SqlClient": {
               "target": "Package",
               "version": "[3.0.0, )"
-            },
-            "Newtonsoft.Json": {
-              "target": "Package",
-              "version": "[13.0.1, )"
             }
           },
           "imports": [
