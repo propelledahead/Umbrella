@@ -19,7 +19,7 @@
   const consolePrefix = 'SweetAlert2:';
   /**
    * Filter the unique values into a new array
-   * @param arr
+   * param arr
    */
 
   const uniqueArray = arr => {
@@ -35,19 +35,19 @@
   };
   /**
    * Capitalize the first letter of a string
-   * @param str
+   * param str
    */
 
   const capitalizeFirstLetter = str => str.charAt(0).toUpperCase() + str.slice(1);
   /**
    * Convert NodeList to Array
-   * @param nodeList
+   * param nodeList
    */
 
   const toArray = nodeList => Array.prototype.slice.call(nodeList);
   /**
    * Standardise console warnings
-   * @param message
+   * param message
    */
 
   const warn = message => {
@@ -55,7 +55,7 @@
   };
   /**
    * Standardise console errors
-   * @param message
+   * param message
    */
 
   const error = message => {
@@ -63,14 +63,14 @@
   };
   /**
    * Private global state for `warnOnce`
-   * @type {Array}
-   * @private
+   * type {Array}
+   * private
    */
 
   const previousWarnOnceMessages = [];
   /**
    * Show a console warning, but only if it hasn't already been shown
-   * @param message
+   * param message
    */
 
   const warnOnce = message => {
@@ -89,7 +89,7 @@
   /**
    * If `arg` is a function, call it (with no arguments or context) and return the result.
    * Otherwise, just pass the value through
-   * @param arg
+   * param arg
    */
 
   const callIfFunction = arg => typeof arg === 'function' ? arg() : arg;
@@ -1171,7 +1171,7 @@
    * const {value: firstName} = await TextPrompt('What is your first name?')
    * const {value: lastName} = await TextPrompt('What is your last name?')
    *
-   * @param mixinParams
+   * param mixinParams
    */
   function mixin(mixinParams) {
     class MixinSwal extends this {
@@ -1443,7 +1443,7 @@
   const toastIncompatibleParams = ['allowOutsideClick', 'allowEnterKey', 'backdrop', 'focusConfirm', 'focusDeny', 'focusCancel', 'returnFocus', 'heightAuto', 'keydownListenerCapture'];
   /**
    * Is valid parameter
-   * @param {String} paramName
+   * param {String} paramName
    */
 
   const isValidParameter = paramName => {
@@ -1451,7 +1451,7 @@
   };
   /**
    * Is valid parameter for Swal.update() method
-   * @param {String} paramName
+   * param {String} paramName
    */
 
   const isUpdatableParameter = paramName => {
@@ -1459,7 +1459,7 @@
   };
   /**
    * Is deprecated parameter
-   * @param {String} paramName
+   * param {String} paramName
    */
 
   const isDeprecatedParameter = paramName => {
@@ -1486,7 +1486,7 @@
   /**
    * Show relevant warnings for given params
    *
-   * @param params
+   * param params
    */
 
 
@@ -1508,7 +1508,7 @@
 
 
 
-  var staticMethods = /*#__PURE__*/Object.freeze({
+  var staticMethods = /* __PURE__*/Object.freeze({
     isValidParameter: isValidParameter,
     isUpdatableParameter: isUpdatableParameter,
     isDeprecatedParameter: isDeprecatedParameter,
@@ -2034,8 +2034,8 @@
   /**
    * Set type, text and actions on popup
    *
-   * @param params
-   * @returns {boolean}
+   * param params
+   * returns {boolean}
    */
 
 
@@ -2231,7 +2231,7 @@
   /**
    * Open popup, add necessary classes and styles, fix scrollbar
    *
-   * @param params
+   * param params
    */
 
   const openPopup = params => {
@@ -2455,7 +2455,7 @@
   };
   /**
    * Converts `inputOptions` into an array of `[value, label]`s
-   * @param inputOptions
+   * param inputOptions
    */
 
   const formatInputOptions = inputOptions => {
@@ -3039,7 +3039,7 @@
 
 
 
-  var instanceMethods = /*#__PURE__*/Object.freeze({
+  var instanceMethods = /* __PURE__*/Object.freeze({
     hideLoading: hideLoading,
     disableLoading: hideLoading,
     getInput: getInput$1,

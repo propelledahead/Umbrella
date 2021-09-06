@@ -20,7 +20,7 @@
       "wwwroot/lib/axios/0.21.1/axios.js",
       "wwwroot/lib/moment/2.29.1/moment.js",
       "wwwroot/lib/numeral/2.0.6/numeral.js",
-      "wwwroot/lib/sweetalert2/11.1.4/sweetalert2.js",
+      "wwwroot/lib/sweetalert2/11.1.4/sweetalert2.min.js",
       "wwwroot/views/Shared/site.js"
     ],
     "minify": {
