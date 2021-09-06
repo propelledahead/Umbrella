@@ -3,3 +3,6 @@ Umbrella/Umbrella/appsettings.Development.json
 Umbrella/Umbrella/obj/Debug/
 Umbrella/Umbrella/bin/Debug/*
 Umbrella/Umbrella/obj/Debug/netcoreapp3.1/*
+Umbrella/Umbrella/obj/Debug/netcoreapp3.1/Umbrella.assets.cache
+Umbrella/Umbrella/obj/Debug/netcoreapp3.1/Umbrella.csproj.FileListAbsolute.txt
+Umbrella/Umbrella/obj/Debug/netcoreapp3.1/Umbrella.Views.dll
