@@ -8,16 +8,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BundlerMinifier.TagHelpers;
-using Umbrella.DataLayer.Helpers;
-using Umbrella.Models.Framework;
-using System.Text.Json.Serialization;
 using Umbrella.Abstracts;
 
 namespace Umbrella {
     public class Startup {
-
-        private SecureConfiguration _SecureConfiguration = new SecureConfiguration();
-
 
 
         public Startup(IConfiguration configuration) {

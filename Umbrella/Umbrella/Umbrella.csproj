@@ -17,6 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Models\Framework\" />
     <Folder Include="wwwroot\bundles\" />
     <Folder Include="wwwroot\views\Home\" />
   </ItemGroup>

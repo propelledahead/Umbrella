@@ -3,27 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Collections;
-using Umbrella.Models.User; // for receiving and response models
 using Microsoft.Data.SqlClient;
-using Umbrella.Models.Framework;
-using Microsoft.Extensions.Configuration;
 using Umbrella.DataLayer.Helpers;
-using Microsoft.Extensions.Configuration;
+using Umbrella.Models.User; // for receiving and response models
 
 namespace Umbrella.DataLayer {
     public class UserDAL {
-        #region Constructors
+        #region Globals
         private MSSQLHelper oMSSQLHelper = new MSSQLHelper();
 
+        #endregion
+        #region Constructors
         public UserDAL() {
 
         }
+        #endregion
 
-
+        #region Class Helpers
         public void Disconnect() {
             this.oMSSQLHelper.Disconnect();
         }
-
 
         #endregion
 

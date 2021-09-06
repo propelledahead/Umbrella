@@ -3,7 +3,6 @@ project type: asp.net mvc core 3.1 lts
 - disable https
 
 Nuget packages
-Install-Package Newtonsoft.Json
-Install-Package BuildBundlerMinifier
+Install-Package BuildBundlerMinifier.Core
 Install-Package BundlerMinifier.TagHelpers
 Install-Package Microsoft.Data.SqlClient
