@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Reflection;
 
-namespace Umbrella.ControllersHelpers {
+namespace Umbrella.Controllers.Helpers {
     public static class JsonHelper {
         public static Object parse_json_to_object(Type ClassModelType, System.IO.Stream InputStream) {
             //object _result = Activator.CreateInstance(ClassModelType);

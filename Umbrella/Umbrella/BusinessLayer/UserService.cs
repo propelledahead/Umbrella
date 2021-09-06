@@ -7,24 +7,34 @@ using Umbrella.DataLayer;
 
 namespace Umbrella.BusinessLayer {
     /// <summary>
+    /// Business Layer Object for Users
     ///  Note: This is where when the app gets to a signifigant size we should replace this placeholder layer with IoC & DI
-    ///  
     /// </summary>
 
     public class UserService {
 
         public UserService() { }
 
-        public List<user_read_response> users_get(user_read_request oModel) {
+        public List<user_read_response> user_read(user_read_request oModel) {
             List<user_read_response> _result = new List<user_read_response>();
             try {
                 // some sort of validation test here
-                UserDAO _DAO = new UserDAO();
+                UserDAL _DAO = new UserDAL();
                 _result = _DAO.user_details_read(oModel);
+                _DAO.Disconnect();
             } catch { }
             return _result;
         }
-
+        public List<user_read_response> users_all_read() {
+            List<user_read_response> _result = new List<user_read_response>();
+            try {
+                // some sort of validation test here
+                UserDAL _DAO = new UserDAL();
+                _result = _DAO.users_all_read();
+                _DAO.Disconnect();
+            } catch { }
+            return _result;
+        }
 
     }
 }

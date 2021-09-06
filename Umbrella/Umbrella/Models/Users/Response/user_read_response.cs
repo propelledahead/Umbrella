@@ -6,17 +6,26 @@ using System.Threading.Tasks;
 namespace Umbrella.Models.User {
     public class user_read_response {
         private Guid _id = Guid.Empty;
+        private string _user_name = "";
         private string _name_first = "";
         private string _name_last = "";
         private string _email_address = "";
         private int _user_status = 0;
-        private DateTime _record_created = DateTime.MinValue;
-        private DateTime _record_updated = DateTime.MinValue;
-        private bool _record_status = false;
+        private DateTime _record_created = DateTime.Parse("1900-01-01 01:00:00");
+        private DateTime _record_updated = DateTime.Parse("1900-01-01 01:00:00");
+        private int _record_status = 0;
 
         public Guid id {
             get { return this._id; }
-            set { this._id = value; }
+            set {
+
+                    this._id = value;
+
+            }
+        }
+        public string user_name {
+            get { return this._user_name; }
+            set { this._user_name = value; }
         }
         public string name_first {
             get { return this._name_first; }
@@ -34,15 +43,23 @@ namespace Umbrella.Models.User {
             get { return this._user_status; }
             set { this._user_status = value; }
         }
-        public DateTime record_created {
-            get { return this._record_created; }
-            set { this._record_created = value; }
+        public string record_created {
+            get { return this._record_created.ToString("yyyy-MM-dd HH:mm:ss"); }
+            set {
+                if (!String.IsNullOrEmpty(value)) {
+                    this._record_created = DateTime.Parse(value);
+                }
+            }
         }
-        public DateTime record_updated {
-            get { return this._record_updated; }
-            set { this._record_updated = value; }
+        public string record_updated {
+            get { return this._record_updated.ToString("yyyy-MM-dd HH:mm:ss"); }
+            set {
+                if (!String.IsNullOrEmpty(value)) {
+                    this._record_updated = DateTime.Parse(value);
+                }
+            }
         }
-        public bool record_status {
+        public int record_status {
             get { return this._record_status; }
             set { this._record_status = value; }
         }
