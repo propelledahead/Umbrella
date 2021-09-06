@@ -1,4 +1,5 @@
 Umbrella/Umbrella/appsettings.json
 Umbrella/Umbrella/appsettings.Development.json
+Umbrella/Umbrella/obj/Debug/
 Umbrella/Umbrella/bin/Debug/*
 Umbrella/Umbrella/obj/Debug/netcoreapp3.1/*
