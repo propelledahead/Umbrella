@@ -8,3 +8,4 @@ Umbrella/Umbrella/obj/Debug/netcoreapp3.1/Umbrella.csproj.FileListAbsolute.txt
 Umbrella/Umbrella/obj/Debug/netcoreapp3.1/Umbrella.Views.dll
 Umbrella/.vs/Umbrella/v16/.suo
 *.v2
+Umbrella/Umbrella/appsettings.Development.json
