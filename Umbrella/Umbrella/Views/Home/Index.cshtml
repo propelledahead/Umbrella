@@ -4,5 +4,18 @@
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+    testing user read
+    <div id="app">
+        {{message}} 
+        <template v-if="user_read_data.body.length > 0">
+            {{user_read_data.body[0].user_name}}
+        </template>
+        <template v-else>
+        </template>
+
+    </div>
+
+   
+
 </div>

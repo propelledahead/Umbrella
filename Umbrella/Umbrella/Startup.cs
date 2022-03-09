@@ -26,6 +26,13 @@ namespace Umbrella {
             services.AddControllers();
             services.AddControllersWithViews();
             services.AddBundles(options => { options.AppendVersion = true; });
+            // work around for issue: Synchronous operations are disallowed. Call ReadAsync or set AllowSynchronousIO to true instead
+            //services.Configure<KestrelServerOptions>(options => {
+            //    options.AllowSynchronousIO = true;
+            //});
+            services.Configure<IISServerOptions>(options => {
+                options.AllowSynchronousIO = true;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
