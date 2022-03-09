@@ -13,29 +13,40 @@ using Umbrella.Controllers.Helpers; // for json parser
 using System.Reflection; // for controller helpers (json parser)
 using System.Text.Json;
 
-
 namespace Umbrella.Controllers {
 
     public class UserAPIController : Controller {
 
 
         public ActionResult users_all_read() {
-            // Create a business logic instance and process request using business logic
+            // api endpoint without any request model
             UserService _business_service = new UserService();
             List<user_read_response> _response = _business_service.users_all_read();
             return Json(new JSONWrapper(_response));
         }
 
+
         public ActionResult user_read() {
-            // Parse/Map Request Stream (JSON) into a strongly typed Model Object
-            user_read_request _request = (user_read_request)JsonHelper.parse_json_to_object(
-                Assembly.GetExecutingAssembly().GetType("user_read_request")
-                , Request.Body
-            );
-            // Create a business logic instance and process request using business logic
+            // api endpoint with or without a request model
+            user_read_request _request = new user_read_request();
+            if (Request.Body != null) {
+                _request = (user_read_request)JsonHelper.parse_json_to_object(new user_read_request(), Request.Body);
+            }
             UserService _business_service = new UserService();
             List<user_read_response> _response = _business_service.user_read(_request); 
-            return Json(new JSONWrapper(_response));
+            return Json(new JSONWrapper(_response, "/UserAPI/user_read"));
+        }
+
+        public ActionResult user_search() {
+            // api endpoint with or without a request model
+            user_read_request _request = new user_read_request();
+            if (Request.Body != null) {
+                _request = (user_read_request)JsonHelper.parse_json_to_object(new user_read_request(), Request.Body);
+            }
+            UserService _business_service = new UserService();
+           // List<user_read_response> _response = _business_service.user_search(_request);
+            Tuple< List<user_read_response>,JSONPagedWrapperMetadata > _service_response = _business_service.user_search(_request);
+            return Json(new JSONPagedWrapper(_service_response.Item1, _service_response.Item2, "/UserAPI/user_read"));
         }
 
 

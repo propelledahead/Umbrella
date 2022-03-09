@@ -5,7 +5,7 @@
     <CopyRefAssembliesToPublishDirectory>false</CopyRefAssembliesToPublishDirectory>
     <StartupObject>Umbrella.Program</StartupObject>
     <UserSecretsId>9ab59fc0-86c5-4b32-845c-76ac384a6495</UserSecretsId>
-    <ApplicationIcon />
+    <ApplicationIcon>wwwroot\favicon.ico</ApplicationIcon>
     <EnableNETAnalyzers>true</EnableNETAnalyzers>
   </PropertyGroup>
 
@@ -18,8 +18,6 @@
 
   <ItemGroup>
     <Folder Include="Models\Framework\" />
-    <Folder Include="wwwroot\bundles\" />
-    <Folder Include="wwwroot\views\Home\" />
   </ItemGroup>
 
 </Project>

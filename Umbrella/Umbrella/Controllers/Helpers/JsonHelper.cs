@@ -6,20 +6,26 @@ using System.Reflection;
 
 namespace Umbrella.Controllers.Helpers {
     public static class JsonHelper {
-        public static Object parse_json_to_object(Type ClassModelType, System.IO.Stream InputStream) {
-            //object _result = Activator.CreateInstance(ClassModelType);
-            object _result = Activator.CreateInstance(ClassModelType.Assembly.FullName, ClassModelType.Name);
+        public static Object parse_json_to_object(Object ClassInstance, System.IO.Stream RequestBody) {
+            var _result = ClassInstance;
             try {
-                string _json_request = "";
-                using (System.IO.Stream _oRequestStream = InputStream) {
-                    _oRequestStream.Seek(0, System.IO.SeekOrigin.Begin);
-                    _json_request = new System.IO.StreamReader(_oRequestStream).ReadToEnd();
-                }
-                if (!String.IsNullOrEmpty(_json_request)) {
-                    _result = Newtonsoft.Json.JsonConvert.DeserializeObject(_json_request, ClassModelType);
+                if (RequestBody != null) {
+                    using (var _reader = new System.IO.StreamReader(
+                            RequestBody,
+                            encoding: System.Text.Encoding.UTF8,
+                            detectEncodingFromByteOrderMarks: false,
+                            bufferSize: 1024,
+                            leaveOpen: true
+                        )
+                    ) {
+                        string _raw_request = _reader.ReadToEnd();
+                        if (!String.IsNullOrEmpty(_raw_request)) {
+                            _result = Newtonsoft.Json.JsonConvert.DeserializeObject(_raw_request, ClassInstance.GetType());
+                        }
+                    }
                 }
             } catch { }
-            return _result;               
+            return _result;
         }
         //public json_helper() {}
     }
