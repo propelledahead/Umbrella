@@ -16,9 +16,9 @@ namespace Umbrella.BusinessLayer {
 
         public UserService() { }
 
-        public Tuple<List<user_read_response>, JSONPagedWrapperMetadata> user_search(user_read_request oModel) {
+        public Tuple<List<user_read_response>, json_envelope_paged_metadata> user_search(user_read_request oModel) {
             List<user_read_response> _result = new List<user_read_response>();
-            JSONPagedWrapperMetadata _meta = new JSONPagedWrapperMetadata();
+            json_envelope_paged_metadata _meta = new json_envelope_paged_metadata();
             _meta.results_per_page = 5;
             _meta.total_pages = 9000;
             try {
@@ -28,7 +28,7 @@ namespace Umbrella.BusinessLayer {
                 _DAO.Disconnect();
             } catch { }
             //return _result;
-            return Tuple.Create<List<user_read_response>, JSONPagedWrapperMetadata>(_result, _meta);
+            return Tuple.Create<List<user_read_response>, json_envelope_paged_metadata>(_result, _meta);
         }
         public List<user_read_response> user_read(user_read_request oModel) {
             List<user_read_response> _result = new List<user_read_response>();

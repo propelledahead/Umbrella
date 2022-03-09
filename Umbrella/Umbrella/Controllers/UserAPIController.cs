@@ -22,7 +22,7 @@ namespace Umbrella.Controllers {
             // api endpoint without any request model
             UserService _business_service = new UserService();
             List<user_read_response> _response = _business_service.users_all_read();
-            return Json(new JSONWrapper(_response));
+            return Json(new json_envelope_simple(_response));
         }
 
 
@@ -30,23 +30,22 @@ namespace Umbrella.Controllers {
             // api endpoint with or without a request model
             user_read_request _request = new user_read_request();
             if (Request.Body != null) {
-                _request = (user_read_request)JsonHelper.parse_json_to_object(new user_read_request(), Request.Body);
+                _request = (user_read_request)json_reader.parse_json_to_object(new user_read_request(), Request.Body);
             }
             UserService _business_service = new UserService();
             List<user_read_response> _response = _business_service.user_read(_request); 
-            return Json(new JSONWrapper(_response, "/UserAPI/user_read"));
+            return Json(new json_envelope_simple(_response, "/UserAPI/user_read"));
         }
 
         public ActionResult user_search() {
             // api endpoint with or without a request model
             user_read_request _request = new user_read_request();
             if (Request.Body != null) {
-                _request = (user_read_request)JsonHelper.parse_json_to_object(new user_read_request(), Request.Body);
+                _request = (user_read_request)json_reader.parse_json_to_object(new user_read_request(), Request.Body);
             }
             UserService _business_service = new UserService();
-           // List<user_read_response> _response = _business_service.user_search(_request);
-            Tuple< List<user_read_response>,JSONPagedWrapperMetadata > _service_response = _business_service.user_search(_request);
-            return Json(new JSONPagedWrapper(_service_response.Item1, _service_response.Item2, "/UserAPI/user_read"));
+            Tuple< List<user_read_response>, json_envelope_paged_metadata> _service_response = _business_service.user_search(_request);
+            return Json(new json_envelope_paged(_service_response.Item1, _service_response.Item2, "/UserAPI/user_search"));
         }
 
 
