@@ -12,7 +12,7 @@ namespace Umbrella.DataLayer.Helpers {
 
         #region Globals
         private SqlConnection _SqlConnection;
-        private MSSQLConnectionCredential _SqlConnectionStringBuilder;
+        //private MSSQLConnectionCredential _SqlConnectionStringBuilder;
         private string _parameter_prefix = "@";
         private string _parameter_suffix = " ";
         private string _cached_connection_string = "";
@@ -32,7 +32,8 @@ namespace Umbrella.DataLayer.Helpers {
             if (!this.IsConnected()) {
                 try {
                     if (String.IsNullOrEmpty(this._cached_connection_string)) {
-                        this._cached_connection_string = this._SqlConnectionStringBuilder.ToConnectionString();
+                        this._cached_connection_string = AppSettings.Configuration.GetValue<string>("ConnectionStrings:DefaultDNS");
+                        //    this._cached_connection_string = this._SqlConnectionStringBuilder.ToConnectionString();
                     }
                     this._SqlConnection = new SqlConnection(this._cached_connection_string);
                     this._SqlConnection.Open();
@@ -42,8 +43,9 @@ namespace Umbrella.DataLayer.Helpers {
                 if (!this.IsConnected()) {
                     try {
                         if (String.IsNullOrEmpty(this._cached_connection_string)) {
-                            this._SqlConnectionStringBuilder.PreferUsingServerIPAddress = false;
-                            this._cached_connection_string = this._SqlConnectionStringBuilder.ToConnectionString();
+                            this._cached_connection_string = AppSettings.Configuration.GetValue<string>("ConnectionStrings:DefaultIP");
+                            //    this._SqlConnectionStringBuilder.PreferUsingServerIPAddress = false;
+                            //    this._cached_connection_string = this._SqlConnectionStringBuilder.ToConnectionString();
                         }
                         this._SqlConnection = new SqlConnection(this._cached_connection_string);
                         this._SqlConnection.Open();
@@ -162,27 +164,30 @@ namespace Umbrella.DataLayer.Helpers {
         #endregion
 
         #region Private Methods
-        private void ConnectionStringInitialize() {
-            string _server_name = AppSettings.Configuration.GetValue<string>("ConnectionStrings:ServerName");
-            string _server_ip_address = AppSettings.Configuration.GetValue<string>("ConnectionStrings:ServerIPAddress");
-            string _database_name = AppSettings.Configuration.GetValue<string>("ConnectionStrings:DatabaseName");
-            string _user_name = AppSettings.Configuration.GetValue<string>("ConnectionStrings:UserName");
-            string _password = AppSettings.Configuration.GetValue<string>("ConnectionStrings:Password");
-            this._SqlConnectionStringBuilder = new MSSQLConnectionCredential(
-                  _server_ip_address
-                , _server_name
-                , _database_name
-                , _user_name
-                , _password
-            );
+        //private void ConnectionStringInitialize() {
+        //    this._cached_connection_string = AppSettings.Configuration.GetValue<string>("ConnectionStrings:Defult-DNS");
 
-        }
+
+        //    //string _server_name = AppSettings.Configuration.GetValue<string>("ConnectionStrings:ServerName");
+        //    //string _server_ip_address = AppSettings.Configuration.GetValue<string>("ConnectionStrings:ServerIPAddress");
+        //    //string _database_name = AppSettings.Configuration.GetValue<string>("ConnectionStrings:DatabaseName");
+        //    //string _user_name = AppSettings.Configuration.GetValue<string>("ConnectionStrings:UserName");
+        //    //string _password = AppSettings.Configuration.GetValue<string>("ConnectionStrings:Password");
+        //    //this._SqlConnectionStringBuilder = new MSSQLConnectionCredential(
+        //    //      _server_ip_address
+        //    //    , _server_name
+        //    //    , _database_name
+        //    //    , _user_name
+        //    //    , _password
+        //    //);
+
+        //}
 
         #endregion
 
         #region Constructor
         public MSSQLHelper() {
-            this.ConnectionStringInitialize();
+           // this.ConnectionStringInitialize();
             this.Connect();
         }
 

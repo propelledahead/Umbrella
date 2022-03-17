@@ -6,16 +6,24 @@ using System.Collections;
 using Microsoft.Data.SqlClient;
 using Umbrella.DataLayer.Helpers;
 using Umbrella.Models.User; // for receiving and response models
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Umbrella.DataLayer {
     public class UserDAL {
         #region Globals
         private MSSQLHelper oMSSQLHelper = new MSSQLHelper();
+        public DataAccessLayerInterface _DataAccessLayerService;
 
         #endregion
         #region Constructors
-        public UserDAL() {
+        public UserDAL(DataAccessLayerInterface MyDataAccessLayerService) {
 
+
+            //var _MyDataAccessLayerService = (DataAccessLayerService)ServiceProvider.GetService(typeof(DataAccessLayerService));
+
+
+
+            this._DataAccessLayerService = MyDataAccessLayerService;
         }
         #endregion
 
@@ -44,7 +52,10 @@ namespace Umbrella.DataLayer {
             return _result;
         }
 
-
+        public string thing_read() {
+            string _result = this._DataAccessLayerService.get_thing();
+            return _result;
+        }
         #endregion
 
     }

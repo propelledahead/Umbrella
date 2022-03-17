@@ -1,6 +1,6 @@
+C:\Users\Normal\Documents\GitHub\Umbrella\Umbrella\Umbrella\bin\Debug\netcoreapp3.1\appsettings.development.json
 C:\Users\Normal\Documents\GitHub\Umbrella\Umbrella\Umbrella\bin\Debug\netcoreapp3.1\appsettings.json
 C:\Users\Normal\Documents\GitHub\Umbrella\Umbrella\Umbrella\bin\Debug\netcoreapp3.1\bundleconfig.json
-C:\Users\Normal\Documents\GitHub\Umbrella\Umbrella\Umbrella\bin\Debug\netcoreapp3.1\appsettings.development.json
 C:\Users\Normal\Documents\GitHub\Umbrella\Umbrella\Umbrella\bin\Debug\netcoreapp3.1\Umbrella.exe
 C:\Users\Normal\Documents\GitHub\Umbrella\Umbrella\Umbrella\bin\Debug\netcoreapp3.1\Umbrella.deps.json
 C:\Users\Normal\Documents\GitHub\Umbrella\Umbrella\Umbrella\bin\Debug\netcoreapp3.1\Umbrella.runtimeconfig.json
@@ -351,7 +351,6 @@ C:\Users\Normal\Documents\GitHub\Umbrella\Umbrella\Umbrella\bin\Debug\netcoreapp
 C:\Users\Normal\Documents\GitHub\Umbrella\Umbrella\Umbrella\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
 C:\Users\Normal\Documents\GitHub\Umbrella\Umbrella\Umbrella\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
 C:\Users\Normal\Documents\GitHub\Umbrella\Umbrella\Umbrella\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
-C:\Users\Normal\Documents\GitHub\Umbrella\Umbrella\Umbrella\obj\Debug\netcoreapp3.1\Umbrella.csproj.AssemblyReference.cache
 C:\Users\Normal\Documents\GitHub\Umbrella\Umbrella\Umbrella\obj\Debug\netcoreapp3.1\Umbrella.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\Normal\Documents\GitHub\Umbrella\Umbrella\Umbrella\obj\Debug\netcoreapp3.1\Umbrella.AssemblyInfoInputs.cache
 C:\Users\Normal\Documents\GitHub\Umbrella\Umbrella\Umbrella\obj\Debug\netcoreapp3.1\Umbrella.AssemblyInfo.cs
@@ -379,3 +378,4 @@ C:\Users\Normal\Documents\GitHub\Umbrella\Umbrella\Umbrella\obj\Debug\netcoreapp
 C:\Users\Normal\Documents\GitHub\Umbrella\Umbrella\Umbrella\obj\Debug\netcoreapp3.1\Umbrella.dll
 C:\Users\Normal\Documents\GitHub\Umbrella\Umbrella\Umbrella\obj\Debug\netcoreapp3.1\Umbrella.pdb
 C:\Users\Normal\Documents\GitHub\Umbrella\Umbrella\Umbrella\obj\Debug\netcoreapp3.1\Umbrella.genruntimeconfig.cache
+C:\Users\Normal\Documents\GitHub\Umbrella\Umbrella\Umbrella\obj\Debug\netcoreapp3.1\Umbrella.csproj.AssemblyReference.cache

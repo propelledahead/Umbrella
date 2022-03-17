@@ -5,6 +5,8 @@ using System.Web;
 using Umbrella.Models.User;// for receiving and response models
 using Umbrella.DataLayer;
 using Umbrella.Controllers.Helpers;
+using Microsoft.Extensions.DependencyInjection;
+using Umbrella.DataLayer.Helpers;
 
 namespace Umbrella.BusinessLayer {
     /// <summary>
@@ -14,7 +16,11 @@ namespace Umbrella.BusinessLayer {
 
     public class UserService {
 
-        public UserService() { }
+        public DataAccessLayerInterface _DataAccessLayerService;
+
+        public UserService(DataAccessLayerInterface MyDataAccessLayerService) { 
+            this._DataAccessLayerService = MyDataAccessLayerService;
+        }
 
         public Tuple<List<user_read_response>, json_envelope_paged_metadata> user_search(user_read_request oModel) {
             List<user_read_response> _result = new List<user_read_response>();
@@ -23,7 +29,13 @@ namespace Umbrella.BusinessLayer {
             _meta.total_pages = 9000;
             try {
                 // some sort of validation test here
-                UserDAL _DAO = new UserDAL();
+                //var services = this.HttpContext.RequestServices;
+                //var log = (ILog)services.GetService(typeof(ILog));
+
+                
+
+
+                UserDAL _DAO = new UserDAL(this._DataAccessLayerService);
                 _result = _DAO.user_details_read(oModel);
                 _DAO.Disconnect();
             } catch { }
@@ -34,7 +46,7 @@ namespace Umbrella.BusinessLayer {
             List<user_read_response> _result = new List<user_read_response>();
             try {
                 // some sort of validation test here
-                UserDAL _DAO = new UserDAL();
+                UserDAL _DAO = new UserDAL(this._DataAccessLayerService);
                 _result = _DAO.user_details_read(oModel);
                 _DAO.Disconnect();
             } catch { }
@@ -44,8 +56,19 @@ namespace Umbrella.BusinessLayer {
             List<user_read_response> _result = new List<user_read_response>();
             try {
                 // some sort of validation test here
-                UserDAL _DAO = new UserDAL();
+                UserDAL _DAO = new UserDAL(this._DataAccessLayerService);
                 _result = _DAO.users_all_read();
+                _DAO.Disconnect();
+            } catch { }
+            return _result;
+        }
+
+        public string thing_read() {
+            string _result ="";
+            try {
+                // some sort of validation test here
+                UserDAL _DAO = new UserDAL(this._DataAccessLayerService);
+                _result = _DAO.thing_read();
                 _DAO.Disconnect();
             } catch { }
             return _result;
