@@ -4,18 +4,12 @@ using System.Linq;
 using System.Web;
 
 namespace Umbrella.DataLayer.Helpers {
-    public class DatabaseParameters {
-
-        //public enum ParamDataType {
-        //      StringType = 1
-        //    , IntType = 2
-        //}
+    public class database_parameter_item {
 
         private string _param_name = "";
         private object _param_value;
         private string _param_prefix = "@";
         private string _param_suffix = "";
-        // private ParamDataType _ParamDataType = ParamDataType.StringType;
 
         public string ParamName {
             get { return this._param_name; }
@@ -41,16 +35,11 @@ namespace Umbrella.DataLayer.Helpers {
             set { this._param_suffix = value; }
         }
 
-        public DatabaseParameters(
-              string myParamName
-            , object myParamValue
-        //  , ParamDataType myParamDataType = ParamDataType.StringType
-        ) {
+        public database_parameter_item(string myParamName, object myParamValue) {
             System.Text.RegularExpressions.Regex oRegex = new System.Text.RegularExpressions.Regex(@"^[a-zA-Z][a-zA-Z0-9]*$");
-            if (!String.IsNullOrEmpty(myParamName) && myParamName.Length > 0 && oRegex.IsMatch(myParamName)) {
+            if (!String.IsNullOrEmpty(myParamName) && !String.IsNullOrEmpty(myParamName.Trim()) && myParamName.Length > 0 && oRegex.IsMatch(myParamName)) {
                 this._param_name = myParamName;
                 this._param_value = myParamValue;
-                //    this._ParamDataType = myParamDataType;
             } else {
                 throw new ArgumentException("Parameter 'myParamName' may not be null or empty.", "myParamName");
             }

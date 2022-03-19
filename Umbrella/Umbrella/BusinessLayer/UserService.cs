@@ -17,14 +17,12 @@ namespace Umbrella.BusinessLayer {
 
     public class UserBLL {
 
-        public DataAccessLayerInterface _DataAccessLayerService;
+        public data_access_layer_interface _data_access_layer_service;
         private UserDAL _DAO;
 
-        public UserBLL(DataAccessLayerInterface MyDataAccessLayerService) { //DataAccessLayerInterface MyDataAccessLayerService DataAccessLayerInterface MyDataAccessLayerService
-            //this._DataAccessLayerService =  scope.Resolve<DataAccessLayerInterface>();
-
-            this._DataAccessLayerService = MyDataAccessLayerService;
-            this._DAO = new UserDAL(this._DataAccessLayerService);
+        public UserBLL(data_access_layer_interface o_data_access_layer_service) {
+            this._data_access_layer_service = o_data_access_layer_service;
+            this._DAO = new UserDAL(this._data_access_layer_service);
         }
 
         public Tuple<List<user_read_response>, json_envelope_paged_metadata> user_search(user_read_request oModel) {
@@ -34,11 +32,8 @@ namespace Umbrella.BusinessLayer {
             _meta.total_pages = 9000;
             try {
                 // some sort of validation test here
-                //var services = this.HttpContext.RequestServices;
-                //var log = (ILog)services.GetService(typeof(ILog));
-
                 _result = _DAO.user_details_read(oModel);
-                _DAO.Disconnect();
+                _DAO.database_disconnect();
             } catch { }
             //return _result;
             return Tuple.Create<List<user_read_response>, json_envelope_paged_metadata>(_result, _meta);
@@ -47,33 +42,21 @@ namespace Umbrella.BusinessLayer {
             List<user_read_response> _result = new List<user_read_response>();
             try {
                 // some sort of validation test here
-
                 _result = _DAO.user_details_read(oModel);
-                _DAO.Disconnect();
+                _DAO.database_disconnect();
             } catch { }
             return _result;
         }
         public List<user_read_response> users_all_read() {
             List<user_read_response> _result = new List<user_read_response>();
             try {
-                // some sort of validation test here
-                
+                // some sort of validation test here                
                 _result = _DAO.users_all_read();
-                _DAO.Disconnect();
+                _DAO.database_disconnect();
             } catch { }
             return _result;
         }
 
-        public string thing_read() {
-            string _result ="";
-            try {
-                // some sort of validation test here
-                _DataAccessLayerService.we_eat();
-                _result = _DAO.thing_read();
-                _DAO.Disconnect();
-            } catch { }
-            return _result;
-        }
 
     }
 }

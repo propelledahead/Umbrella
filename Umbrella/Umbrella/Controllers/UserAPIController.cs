@@ -20,19 +20,11 @@ namespace Umbrella.Controllers {
 
     public class UserAPIController : Controller {
 
-        //private DataAccessLayerInterface _DataAccessLayerService;
-
-        //public UserAPIController(DataAccessLayerInterface MyDataAccessLayerService) {
-        //    this._DataAccessLayerService = MyDataAccessLayerService;
-        //}
 
         public ActionResult users_all_read() {
             // api endpoint without any request model
-            UserBLL _business_service = new UserBLL(HttpContext.RequestServices.GetRequiredService<DataAccessLayerInterface>());
-
-           // var _business_service = new UserService(HttpContext.RequestServices.GetRequiredService<DataAccessLayerInterface>());
-
-            List<user_read_response> _response = _business_service.users_all_read();
+            UserBLL _business_layer = new UserBLL(HttpContext.RequestServices.GetRequiredService<data_access_layer_interface>());
+            List<user_read_response> _response = _business_layer.users_all_read();
             return Json(new json_envelope_simple(_response));
         }
 
@@ -40,39 +32,19 @@ namespace Umbrella.Controllers {
         public ActionResult user_read() {
             // api endpoint with or without a request model
             user_read_request _request = new user_read_request();
-            if (Request.Body != null) {
-                _request = (user_read_request)json_reader.parse_json_to_object(new user_read_request(), Request.Body);
-            }
-            UserBLL _business_service = new UserBLL(HttpContext.RequestServices.GetRequiredService<DataAccessLayerInterface>());
-            List<user_read_response> _response = _business_service.user_read(_request); 
+            if (Request.Body != null) { _request = (user_read_request)json_reader.parse_json_to_object(new user_read_request(), Request.Body); }
+            UserBLL _business_layer = new UserBLL(HttpContext.RequestServices.GetRequiredService<data_access_layer_interface>());
+            List<user_read_response> _response = _business_layer.user_read(_request); 
             return Json(new json_envelope_simple(_response, "/UserAPI/user_read"));
         }
 
         public ActionResult user_search() {
             // api endpoint with or without a request model
             user_read_request _request = new user_read_request();
-            if (Request.Body != null) {
-                _request = (user_read_request)json_reader.parse_json_to_object(new user_read_request(), Request.Body);
-            }
-            UserBLL _business_service = new UserBLL(HttpContext.RequestServices.GetRequiredService<DataAccessLayerInterface>());
-            Tuple< List<user_read_response>, json_envelope_paged_metadata> _service_response = _business_service.user_search(_request);
+            if (Request.Body != null) { _request = (user_read_request)json_reader.parse_json_to_object(new user_read_request(), Request.Body); }
+            UserBLL _business_layer = new UserBLL(HttpContext.RequestServices.GetRequiredService<data_access_layer_interface>());
+            Tuple< List<user_read_response>, json_envelope_paged_metadata> _service_response = _business_layer.user_search(_request);
             return Json(new json_envelope_paged(_service_response.Item1, _service_response.Item2, "/UserAPI/user_search"));
-        }
-
-        public ActionResult thing_read() {
-            // api endpoint without any request model
-            string _response = "cats";
-            //var services = this.HttpContext.RequestServices;
-            //this.this._DataAccessLayerService = (DataAccessLayerInterface)services.GetService(typeof(DataAccessLayerInterface));            
-
-            UserBLL _business_service = new UserBLL(HttpContext.RequestServices.GetRequiredService<DataAccessLayerInterface>());
-
-            _response = _business_service.thing_read();
-
-            Hashtable _env = new Hashtable();
-            _env.Add("squirrel eats", _response);
-
-            return Json(new json_envelope_simple(_env));
         }
 
 

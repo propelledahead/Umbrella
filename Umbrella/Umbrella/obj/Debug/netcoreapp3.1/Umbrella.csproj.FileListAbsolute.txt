@@ -378,4 +378,3 @@ C:\Users\Normal\Documents\GitHub\Umbrella\Umbrella\Umbrella\obj\Debug\netcoreapp
 C:\Users\Normal\Documents\GitHub\Umbrella\Umbrella\Umbrella\obj\Debug\netcoreapp3.1\Umbrella.dll
 C:\Users\Normal\Documents\GitHub\Umbrella\Umbrella\Umbrella\obj\Debug\netcoreapp3.1\Umbrella.pdb
 C:\Users\Normal\Documents\GitHub\Umbrella\Umbrella\Umbrella\obj\Debug\netcoreapp3.1\Umbrella.genruntimeconfig.cache
-C:\Users\Normal\Documents\GitHub\Umbrella\Umbrella\Umbrella\obj\Debug\netcoreapp3.1\Umbrella.csproj.AssemblyReference.cache
