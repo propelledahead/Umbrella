@@ -8,28 +8,27 @@ namespace Umbrella.DataLayer.Helpers {
     public interface DataAccessLayerInterface {
 
 
-        SqlConnection OpenConnectionGet();
+        //SqlConnection OpenConnectionGet();
 
-        string get_thing();
+        string we_eat();
 
     }
 
-    class DataAccessLayerService : DataAccessLayerInterface {
+    public class DataAccessLayerService : DataAccessLayerInterface {
 
-        private SqlConnection _SqlConnection;
-        private string _ConnectionString = "";
-        private string _something = "";
+        //private SqlConnection _SqlConnection;
+        //private string _ConnectionString = "";
+        private string _food = "";
 
-        public SqlConnection OpenConnectionGet() {
-            return this._SqlConnection;
-        }
+        //public SqlConnection OpenConnectionGet() {
+        //    return this._SqlConnection;
+        //}
 
 
-        public string get_thing() {
-
+        public string we_eat() {
             string _result = "rocks";
-            if (!string.IsNullOrEmpty(this._something)) {
-                _result = this._something;
+            if (!string.IsNullOrEmpty(this._food)) {
+                _result = this._food;
             }
             return _result;
         }
@@ -37,8 +36,8 @@ namespace Umbrella.DataLayer.Helpers {
         public DataAccessLayerService() { 
         
         }
-        public DataAccessLayerService(string MyThing) {
-            this._something = MyThing;
+        public DataAccessLayerService(string MyFood) {
+            this._food = MyFood;
         }
 
     }

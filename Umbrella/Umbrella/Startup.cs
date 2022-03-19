@@ -10,10 +10,12 @@ using System.Threading.Tasks;
 using BundlerMinifier.TagHelpers;
 using Umbrella.Abstracts;
 using Umbrella.DataLayer.Helpers;
+using Umbrella.BusinessLayer;
 
 namespace Umbrella {
     public class Startup {
 
+        
 
         public Startup(IConfiguration configuration) {
             Configuration = configuration;
@@ -25,20 +27,33 @@ namespace Umbrella {
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services) {
-
             services.AddControllers();
-
             services.AddControllersWithViews();
-
             services.AddBundles(options => { options.AppendVersion = true; });
 
+
+
+
+
             //services.AddTransient<IDatabaseConnectionRepository>(x => new DatabaseConnectionRepository(Configuration.GetConnectionString("Default")));
-            services.AddScoped<DataAccessLayerInterface> (options => new DataAccessLayerService("acorns"));
-            //services.AddScoped<DataAccessLayerInterface>(options =>
-            //{
+
+            // works kinda
+            services.AddScoped<DataAccessLayerInterface>(options => new DataAccessLayerService("acorns"));
+           // services.AddScoped(provider => new UserBLL(provider.GetRequiredService<DataAccessLayerInterface>()));
+
+            //services.AddScoped<DataAccessLayerInterface>(x => {
+            //    var _DataAccessLayerImplementation = x.GetRequiredService<DataAccessLayerInterface>();
+            //    return new DataAccessLayerService("acorns");
+            //});
+
+            //services.AddScoped<DataAccessLayerInterface, DataAccessLayerService>();
+            //services.AddScoped(provider => new UserService(provider.GetRequiredService<DataAccessLayerInterface>("acorns")));
+
+            //services.AddScoped<DataAccessLayerInterface>(options => {
             //    var _service = options.GetRequiredService<DataAccessLayerInterface>();
             //    return new DataAccessLayerService("acorns");
             //});
+
             //services.AddScoped<DataAccessLayerInterface, DataAccessLayerService>("acorns");
 
             //services.AddScoped<DataAccessLayerInterface>(DAL => {
@@ -46,12 +61,14 @@ namespace Umbrella {
             //    return new DataAccessLayerService("acorns");
             //});
 
+            //var serviceProvider = services.BuildServiceProvider();
+
+
 
             // work around for issue: Synchronous operations are disallowed. Call ReadAsync or set AllowSynchronousIO to true instead
             //services.Configure<KestrelServerOptions>(options => {
             //    options.AllowSynchronousIO = true;
             //});
-
             services.Configure<IISServerOptions>(options => {
                 options.AllowSynchronousIO = true;
             });
@@ -59,6 +76,7 @@ namespace Umbrella {
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env) {
+
             if (env.IsDevelopment()) {
                 app.UseDeveloperExceptionPage();
             } else {

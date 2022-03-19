@@ -8,18 +8,23 @@ using Umbrella.Controllers.Helpers;
 using Microsoft.Extensions.DependencyInjection;
 using Umbrella.DataLayer.Helpers;
 
+
 namespace Umbrella.BusinessLayer {
     /// <summary>
     /// Business Layer Object for Users
     ///  Note: This is where when the app gets to a signifigant size we should replace this placeholder layer with IoC & DI
     /// </summary>
 
-    public class UserService {
+    public class UserBLL {
 
         public DataAccessLayerInterface _DataAccessLayerService;
+        private UserDAL _DAO;
 
-        public UserService(DataAccessLayerInterface MyDataAccessLayerService) { 
+        public UserBLL(DataAccessLayerInterface MyDataAccessLayerService) { //DataAccessLayerInterface MyDataAccessLayerService DataAccessLayerInterface MyDataAccessLayerService
+            //this._DataAccessLayerService =  scope.Resolve<DataAccessLayerInterface>();
+
             this._DataAccessLayerService = MyDataAccessLayerService;
+            this._DAO = new UserDAL(this._DataAccessLayerService);
         }
 
         public Tuple<List<user_read_response>, json_envelope_paged_metadata> user_search(user_read_request oModel) {
@@ -32,10 +37,6 @@ namespace Umbrella.BusinessLayer {
                 //var services = this.HttpContext.RequestServices;
                 //var log = (ILog)services.GetService(typeof(ILog));
 
-                
-
-
-                UserDAL _DAO = new UserDAL(this._DataAccessLayerService);
                 _result = _DAO.user_details_read(oModel);
                 _DAO.Disconnect();
             } catch { }
@@ -46,7 +47,7 @@ namespace Umbrella.BusinessLayer {
             List<user_read_response> _result = new List<user_read_response>();
             try {
                 // some sort of validation test here
-                UserDAL _DAO = new UserDAL(this._DataAccessLayerService);
+
                 _result = _DAO.user_details_read(oModel);
                 _DAO.Disconnect();
             } catch { }
@@ -56,7 +57,7 @@ namespace Umbrella.BusinessLayer {
             List<user_read_response> _result = new List<user_read_response>();
             try {
                 // some sort of validation test here
-                UserDAL _DAO = new UserDAL(this._DataAccessLayerService);
+                
                 _result = _DAO.users_all_read();
                 _DAO.Disconnect();
             } catch { }
@@ -67,7 +68,7 @@ namespace Umbrella.BusinessLayer {
             string _result ="";
             try {
                 // some sort of validation test here
-                UserDAL _DAO = new UserDAL(this._DataAccessLayerService);
+                _DataAccessLayerService.we_eat();
                 _result = _DAO.thing_read();
                 _DAO.Disconnect();
             } catch { }

@@ -12,17 +12,19 @@ namespace Umbrella.DataLayer {
     public class UserDAL {
         #region Globals
         private MSSQLHelper oMSSQLHelper = new MSSQLHelper();
+        //private DataAccessLayerService oDataLayerService;
         public DataAccessLayerInterface _DataAccessLayerService;
+
 
         #endregion
         #region Constructors
-        public UserDAL(DataAccessLayerInterface MyDataAccessLayerService) {
-
-
+        public UserDAL(DataAccessLayerInterface MyDataAccessLayerService) { //
+            //Type _InterfaceType = new Type { typeof(DataAccessLayerInterface) };
+            //var instance = ActivatorUtilities.GetServiceOrCreateInstance<DataAccessLayerInterface>(s, DataAccessLayerService);
+            //var dependency = ActivatorUtilities.GetServiceOrCreateInstance<DataAccessLayerInterface>();
+            //this.oDataLayerService = (DataAccessLayerInterface)ServiceProvider.GetService(_InterfaceType);
+            //this.oDataLayerService = ActivatorUtilities.GetServiceOrCreateInstance(DataAccessLayerInterface MyDataAccessLayerService, new Type[] { typeof(DataAccessLayerService) });
             //var _MyDataAccessLayerService = (DataAccessLayerService)ServiceProvider.GetService(typeof(DataAccessLayerService));
-
-
-
             this._DataAccessLayerService = MyDataAccessLayerService;
         }
         #endregion
@@ -53,7 +55,7 @@ namespace Umbrella.DataLayer {
         }
 
         public string thing_read() {
-            string _result = this._DataAccessLayerService.get_thing();
+            string _result = this._DataAccessLayerService.we_eat();
             return _result;
         }
         #endregion

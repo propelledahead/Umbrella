@@ -12,21 +12,26 @@ using Umbrella.BusinessLayer; // for business services BLLs
 using Umbrella.Controllers.Helpers; // for json parser
 using System.Reflection; // for controller helpers (json parser)
 using System.Text.Json;
+using Microsoft.Extensions.DependencyInjection;
 using Umbrella.DataLayer.Helpers;
+//using Umbrella.DataLayer.Helpers;
 
 namespace Umbrella.Controllers {
 
     public class UserAPIController : Controller {
 
-        private DataAccessLayerInterface _DataAccessLayerService;
+        //private DataAccessLayerInterface _DataAccessLayerService;
 
-        public UserAPIController(DataAccessLayerInterface MyDataAccessLayerService) {
-            this._DataAccessLayerService = MyDataAccessLayerService;
-        }
+        //public UserAPIController(DataAccessLayerInterface MyDataAccessLayerService) {
+        //    this._DataAccessLayerService = MyDataAccessLayerService;
+        //}
 
         public ActionResult users_all_read() {
             // api endpoint without any request model
-            UserService _business_service = new UserService(this._DataAccessLayerService);
+            UserBLL _business_service = new UserBLL(HttpContext.RequestServices.GetRequiredService<DataAccessLayerInterface>());
+
+           // var _business_service = new UserService(HttpContext.RequestServices.GetRequiredService<DataAccessLayerInterface>());
+
             List<user_read_response> _response = _business_service.users_all_read();
             return Json(new json_envelope_simple(_response));
         }
@@ -38,7 +43,7 @@ namespace Umbrella.Controllers {
             if (Request.Body != null) {
                 _request = (user_read_request)json_reader.parse_json_to_object(new user_read_request(), Request.Body);
             }
-            UserService _business_service = new UserService(this._DataAccessLayerService);
+            UserBLL _business_service = new UserBLL(HttpContext.RequestServices.GetRequiredService<DataAccessLayerInterface>());
             List<user_read_response> _response = _business_service.user_read(_request); 
             return Json(new json_envelope_simple(_response, "/UserAPI/user_read"));
         }
@@ -49,7 +54,7 @@ namespace Umbrella.Controllers {
             if (Request.Body != null) {
                 _request = (user_read_request)json_reader.parse_json_to_object(new user_read_request(), Request.Body);
             }
-            UserService _business_service = new UserService(this._DataAccessLayerService);
+            UserBLL _business_service = new UserBLL(HttpContext.RequestServices.GetRequiredService<DataAccessLayerInterface>());
             Tuple< List<user_read_response>, json_envelope_paged_metadata> _service_response = _business_service.user_search(_request);
             return Json(new json_envelope_paged(_service_response.Item1, _service_response.Item2, "/UserAPI/user_search"));
         }
@@ -60,7 +65,8 @@ namespace Umbrella.Controllers {
             //var services = this.HttpContext.RequestServices;
             //this.this._DataAccessLayerService = (DataAccessLayerInterface)services.GetService(typeof(DataAccessLayerInterface));            
 
-            UserService _business_service = new UserService(this._DataAccessLayerService);
+            UserBLL _business_service = new UserBLL(HttpContext.RequestServices.GetRequiredService<DataAccessLayerInterface>());
+
             _response = _business_service.thing_read();
 
             Hashtable _env = new Hashtable();
