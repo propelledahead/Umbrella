@@ -6,22 +6,27 @@ using System.Collections;
 using Microsoft.Data.SqlClient;
 using Umbrella.DataLayer.Helpers;
 using Umbrella.Models.User; // for receiving and response models
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Umbrella.DataLayer {
     public class UserDAL {
+
         #region Globals
-        private MSSQLHelper oMSSQLHelper = new MSSQLHelper();
+        public data_access_layer_interface _data_access_layer_service;
+
 
         #endregion
         #region Constructors
-        public UserDAL() {
 
+        public UserDAL(data_access_layer_interface o_data_access_layer_service) {
+            this._data_access_layer_service = o_data_access_layer_service;
         }
+        
         #endregion
-
         #region Class Helpers
-        public void Disconnect() {
-            this.oMSSQLHelper.Disconnect();
+        
+        public void database_disconnect() {
+            this._data_access_layer_service.database_disconnect();
         }
 
         #endregion
@@ -30,16 +35,16 @@ namespace Umbrella.DataLayer {
 
         public List<user_read_response> users_all_read() {
             string _query = "SELECT * FROM fw_user";
-            SqlDataReader _oSqlDataReader = oMSSQLHelper.Query(_query);
+            SqlDataReader _oSqlDataReader = this._data_access_layer_service.database_query(_query);
             List<user_read_response> _result = _oSqlDataReader.map_data_reader_to_object_list<user_read_response>();
             return _result;
         }
 
         public List<user_read_response> user_details_read(user_read_request oModel) {
-            Hashtable _parameters = new Hashtable();
+            database_parameters_list _parameters = new database_parameters_list();
             string _query = "SELECT * FROM fw_user WHERE id = @id";
-            _parameters.Add("id", oModel.user_guid);
-            SqlDataReader _oSqlDataReader = oMSSQLHelper.Query(_query, _parameters);
+            _parameters.add_parameter("id", oModel.user_guid);
+            SqlDataReader _oSqlDataReader = this._data_access_layer_service.database_query(_query, _parameters);
             List<user_read_response> _result = _oSqlDataReader.map_data_reader_to_object_list<user_read_response>();
             return _result;
         }

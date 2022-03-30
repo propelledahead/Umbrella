@@ -4,29 +4,29 @@ using System.Linq;
 using System.Threading.Tasks;
 
 namespace Umbrella.Controllers.Helpers {
-    public class JSONWrapper {
+    public class json_envelope_simple {
 
         private object _body = "";
-        private JSONWrapperMetadata _meta = new JSONWrapperMetadata();
+        private json_envelope_metadata_simple _meta = new json_envelope_metadata_simple();
 
         public object body {
             get { return this._body; }
             set { if (value != null) { this._body = value; } }
         }
-        public JSONWrapperMetadata meta {
+        public json_envelope_metadata_simple meta {
             get { return this._meta;  }
             set { if (value != null) { this._meta = value; } }
         }
 
-        public JSONWrapper(object JsonBody) {
+        public json_envelope_simple(object JsonBody) {
             this.body = JsonBody;
         }
-        public JSONWrapper(object JsonBody, string ServiceEndPoint) {
+        public json_envelope_simple(object JsonBody, string ServiceEndPoint) {
             this.body = JsonBody;
             this.meta.endpoint = ServiceEndPoint;
         }
     }
-    public class JSONWrapperMetadata {
+    public class json_envelope_metadata_simple {
 
         private string _endpoint = "";
         private string _info= "";
@@ -56,37 +56,37 @@ namespace Umbrella.Controllers.Helpers {
             get { return this._info; }
             set { this._info = value; }
         }
-        public JSONWrapperMetadata() { }
+        public json_envelope_metadata_simple() { }
     }
 
-    public class JSONPagedWrapper {
+    public class json_envelope_paged {
 
         private object _body = "";
-        private JSONPagedWrapperMetadata _meta = new JSONPagedWrapperMetadata();
+        private json_envelope_paged_metadata _meta = new json_envelope_paged_metadata();
 
         public object body {
             get { return this._body; }
             set { if (value != null) { this._body = value; } }
         }
-        public JSONPagedWrapperMetadata meta {
+        public json_envelope_paged_metadata meta {
             get { return this._meta; }
             set { if (value != null) { this._meta = value; } }
         }
 
-        public JSONPagedWrapper(object JsonBody) {
+        public json_envelope_paged(object JsonBody) {
             this.body = JsonBody;
         }
-        public JSONPagedWrapper(object JsonBody, string ServiceEndPoint) {
+        public json_envelope_paged(object JsonBody, string ServiceEndPoint) {
             this.body = JsonBody;
             this.meta.endpoint = ServiceEndPoint;
         }
-        public JSONPagedWrapper(object JsonBody, JSONPagedWrapperMetadata JsonMetaData,  string ServiceEndPoint) {
+        public json_envelope_paged(object JsonBody, json_envelope_paged_metadata JsonMetaData,  string ServiceEndPoint) {
             this.body = JsonBody;
             this.meta = JsonMetaData;
             this.meta.endpoint = ServiceEndPoint;
         }
     }
-    public class JSONPagedWrapperMetadata {
+    public class json_envelope_paged_metadata {
 
         private string _endpoint = "";
         private string _info = "";
@@ -131,6 +131,6 @@ namespace Umbrella.Controllers.Helpers {
             get { return this._results_per_page; }
             set { this._results_per_page = value; }
         }
-        public JSONPagedWrapperMetadata() { }
+        public json_envelope_paged_metadata() { }
     }
 }

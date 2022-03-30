@@ -5,7 +5,7 @@ using System.Web;
 using System.Reflection;
 
 namespace Umbrella.Controllers.Helpers {
-    public static class JsonHelper {
+    public static class json_reader {
         public static Object parse_json_to_object(Object ClassInstance, System.IO.Stream RequestBody) {
             var _result = ClassInstance;
             try {

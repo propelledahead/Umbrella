@@ -6,11 +6,8 @@ Create a .net website with skinny controllers, ddd, and mvc, business logic and 
 {
     "Environment": "production",
     "ConnectionStrings": {
-        "ServerName": "",
-        "ServerIPAddress": "",
-        "DatabaseName": "",
-        "UserName": "",
-        "Password": ""
+        "DefaultDNS": "Server=serverdnsname; Database=mydatabase; User ID=myuserid; Password=mypassword; Max Pool Size=1000;",
+        "DefaultIP": "Server=serveripaddress; Database=mydatabase; User ID=myuserid; Password=mypassword; Max Pool Size=1000;"
     },
     "Logging": {
         "LogLevel": {
@@ -27,13 +24,10 @@ Create a .net website with skinny controllers, ddd, and mvc, business logic and 
 ## appsettings.development.json
 ```
 {
-    "Environment": "development",
+    "Environment": "production",
     "ConnectionStrings": {
-        "ServerName": "",
-        "ServerIPAddress": "",
-        "DatabaseName": "",
-        "UserName": "",
-        "Password": ""
+        "DefaultDNS": "Server=serverdnsname; Database=mydatabase; User ID=myuserid; Password=mypassword; Max Pool Size=1000;",
+        "DefaultIP": "Server=serveripaddress; Database=mydatabase; User ID=myuserid; Password=mypassword; Max Pool Size=1000;"
     },
     "Logging": {
         "LogLevel": {

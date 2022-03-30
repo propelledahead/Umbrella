@@ -9,14 +9,18 @@ using System.Linq;
 using System.Threading.Tasks;
 using BundlerMinifier.TagHelpers;
 using Umbrella.Abstracts;
+using Umbrella.DataLayer.Helpers;
+using Umbrella.BusinessLayer;
 
 namespace Umbrella {
     public class Startup {
 
+        
 
         public Startup(IConfiguration configuration) {
             Configuration = configuration;
             AppSettings.Configuration = configuration;
+
         }
 
         public IConfiguration Configuration { get; }
@@ -26,10 +30,9 @@ namespace Umbrella {
             services.AddControllers();
             services.AddControllersWithViews();
             services.AddBundles(options => { options.AppendVersion = true; });
-            // work around for issue: Synchronous operations are disallowed. Call ReadAsync or set AllowSynchronousIO to true instead
-            //services.Configure<KestrelServerOptions>(options => {
-            //    options.AllowSynchronousIO = true;
-            //});
+
+            services.AddScoped<data_access_layer_interface>(options => new data_access_layer_service());
+
             services.Configure<IISServerOptions>(options => {
                 options.AllowSynchronousIO = true;
             });
@@ -37,6 +40,7 @@ namespace Umbrella {
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env) {
+
             if (env.IsDevelopment()) {
                 app.UseDeveloperExceptionPage();
             } else {
